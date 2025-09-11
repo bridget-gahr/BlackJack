@@ -17,9 +17,10 @@ public class Player
         //do stuff
     }
 
-    public void hit()
+    public void hit(Deck deck)
     {
-        //do stuff
+        Card newCard = deck.getTopCard();
+        this.hand.add(newCard);
     }
 
     public int getHandValue()
@@ -30,6 +31,9 @@ public class Player
 
     public void getCard(Deck deck)
     {
-        //do stuff
+        for(int i = 0; i < 2; i++)
+        {
+            this.hit(deck);
+        }
     }
 }
