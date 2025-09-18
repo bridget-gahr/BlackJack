@@ -26,7 +26,17 @@ public class Run {
         
         System.out.println(players);
 
-        deck.shuffle;
-        
+        deck.shuffle();
+
+        for(Player player : players)
+        {
+            player.getCard(deck);
+            System.out.println(player.getHandValue());
+        }
+
+        for(Player player : players)
+        {
+            
+        }
     }
 }

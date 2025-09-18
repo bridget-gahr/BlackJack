@@ -25,7 +25,7 @@ public class Player
 
     public int getHandValue()
     {
-        //do stuff
+        
         return 1;
     }
 
