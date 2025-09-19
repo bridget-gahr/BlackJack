@@ -36,7 +36,9 @@ public class Run {
 
         for(Player player : players)
         {
-            
+            player.playTurn(deck);
         }
+
+    
     }
 }

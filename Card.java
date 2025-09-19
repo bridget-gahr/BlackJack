@@ -15,4 +15,14 @@ public class Card
     {
         return this.face + " of " + this.suit + "(" + this.value + ")";
     }
+
+    public int getCardValue(Card card)
+    {
+        return card.value;
+    }
+
+    public String getCardFace(Card card)
+    {
+        return card.face;
+    }
 }
