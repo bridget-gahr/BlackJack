@@ -30,15 +30,25 @@ public class Run {
 
         for(Player player : players)
         {
-            player.getCard(deck);
-            System.out.println(player.getHandValue());
+            player.askBet(player);
         }
 
         for(Player player : players)
         {
-            player.playTurn(deck);
+            player.getCard(deck);
+            System.out.println(player.getName(player) + " your hand value is " + player.getHandValue());
         }
 
+        for(Player player : players)
+        {
+            System.out.println(player.getName(player) + ", it is your turn");
+            player.playTurn(deck);
+            if (player.checkBust(player))
+            {
+                System.out.println("You busted loser!");
+            }
+
+        }
     
     }
 }

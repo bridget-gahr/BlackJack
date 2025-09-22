@@ -13,20 +13,24 @@ public class Player
         this.money = 100;
     }
 
-    public int playTurn(Deck deck)
+    public void playTurn(Deck deck)
     {
         System.out.println("Would you like to hit or stay (hit/stay) ");
         Scanner scanner = new Scanner(System.in);
         String action = scanner.nextLine();
         
-        if (action == "hit")
+        if (action.equals("hit"))
         {
             hit(deck);
-            return getHandValue();
+            System.out.println("Your new hand value is " + getHandValue());
         }
-        else if (action == "stay")
+        else if (action.equals("stay"))
         {
-            return getHandValue();
+            System.out.println("Your hand value is " + getHandValue());
+        }
+        else
+        {
+            System.out.println("not an option");
         }
     }
 
@@ -63,6 +67,32 @@ public class Player
         for(int i = 0; i < 2; i++)
         {
             this.hit(deck);
+        }
+    }
+
+     public int askBet(Player player)
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(player.name + " what do you want to bet: ");
+        int bet = scanner.nextInt();
+        scanner.nextLine();
+        return bet;
+    }
+
+    public String getName(Player player)
+    {
+        return player.name;
+    }
+
+    public boolean checkBust(Player player)
+    {
+        if (getHandValue() < 22)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
         }
     }
 
