@@ -5,6 +5,7 @@ public class Player
 {
     private String name;
     private double money;
+    private double bet;
     private ArrayList<Card> hand = new ArrayList<>();
 
     public Player(String name)
@@ -15,22 +16,29 @@ public class Player
 
     public void playTurn(Deck deck)
     {
-        System.out.println("Would you like to hit or stay (hit/stay) ");
         Scanner scanner = new Scanner(System.in);
-        String action = scanner.nextLine();
+        String action = "hit";
         
-        if (action.equals("hit"))
+        while (action.equals("hit"))
         {
-            hit(deck);
-            System.out.println("Your new hand value is " + getHandValue());
-        }
-        else if (action.equals("stay"))
-        {
-            System.out.println("Your hand value is " + getHandValue());
-        }
-        else
-        {
-            System.out.println("not an option");
+            System.out.println("Would you like to hit or stay (hit/stay) ");
+            action = scanner.nextLine();
+
+            if (action.equals("stay"))
+            {
+                System.out.println("Your hand value is " + getHandValue());
+                break;
+            }
+            else
+            {
+                hit(deck);
+                System.out.println("Your new hand value is " + getHandValue());
+                if (getHandValue() > 21)
+                {
+                    System.out.println("You busted loser!");
+                    break;
+                }
+            }
         }
     }
 
@@ -47,7 +55,7 @@ public class Player
         for(Card card : hand)
         {
             hand_value += card.getCardValue(card);
-            if(card.getCardFace(card) == "A")
+            if(card.getCardFace(card).equals("A"))
             {
                 a_count ++;
             }
@@ -70,13 +78,13 @@ public class Player
         }
     }
 
-     public int askBet(Player player)
+     public void askBet(Player player)
     {
         Scanner scanner = new Scanner(System.in);
         System.out.println(player.name + " what do you want to bet: ");
         int bet = scanner.nextInt();
         scanner.nextLine();
-        return bet;
+        this.bet = bet;
     }
 
     public String getName(Player player)
@@ -94,6 +102,7 @@ public class Player
         {
             return true;
         }
+
     }
 
 }

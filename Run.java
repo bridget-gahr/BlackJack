@@ -43,11 +43,6 @@ public class Run {
         {
             System.out.println(player.getName(player) + ", it is your turn");
             player.playTurn(deck);
-            if (player.checkBust(player))
-            {
-                System.out.println("You busted loser!");
-            }
-
         }
     
     }
