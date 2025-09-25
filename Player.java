@@ -64,7 +64,7 @@ public class Player
         while(hand_value > 21 && a_count > 0)
         {
             a_count --;
-            hand_value = hand_value - 11;
+            hand_value = hand_value - 10;
         }
     
         return hand_value;
@@ -90,6 +90,11 @@ public class Player
     public String getName(Player player)
     {
         return player.name;
+    }
+
+     public ArrayList<Card> getHand()
+    {
+        return this.hand;
     }
 
     public boolean checkBust(Player player)
